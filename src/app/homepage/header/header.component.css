@@ -1,3 +1,14 @@
 .navbar {
   background-color: navy;
 }
+.nav navbar-nav {
+  color: white;
+}
+.container-fluid {
+  justify-content: center;
+}
+.messages {
+  display: flex;
+  color: white;
+  padding-top: 5px;
+}

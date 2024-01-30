@@ -10,6 +10,14 @@
 }
 .questions-container {
   border: 1px solid #f49898;
+  background-image: url("https://64.media.tumblr.com/7bab191664d6c2cf74a84882ccdb9805/tumblr_inline_onr1mxn4ta1ucvxo8_500.gif");
+  background-size: cover;
+
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  color: white;
+  border: 1.5px solid navy;
 }
 .col-lg-3 {
   justify-content: center;
