@@ -1,25 +1,62 @@
-<div class="row">
-  <div class="col-xs-12">
-    <h1 class="form-prompt">Fill in the blanks and find a match</h1>
-  </div>
-</div>
-<form action="">
-  <div class="form-group">
+<div class="container-fluid">
+  <div class="row">
     <div class="col-xs-12">
-      <label for="favorite-color" style="padding: 10px"
-        >Enter your favorite color</label
-      >
-      <input type="text" />
-      <label for="star-sign" style="padding: 10px">What's your sign </label>
-      <input type="text" class="dropdown-menu" />
-      <label for="height" style="padding: 10px">What is your profession</label>
-      <input type="text" />
-      <label for="favorite-color" style="padding: 10px">Favorite sport</label>
-      <input type="text" />
-      <label for="favorite-color" style="padding: 10px"
-        >Favorite place to eat</label
-      >
-      <input type="text" />
+      <h1 class="form-prompt">Fill in the blanks and find a match</h1>
     </div>
   </div>
-</form>
+  <form action="" class="questions-container">
+    <img src="src/assets/images/background_image.gif" alt="Responsive image" />
+    <div class="row justify-content-center">
+      <div class="col-lg-3">
+        <label for="favorite-color" style="padding: 10px"
+          >Enter your favorite color?</label
+        >
+        <input type="text" />
+        <div class="btn-group" style="padding-top: 10px">
+          <a class="btn btn-primary" href="#">
+            <i class="icon-user icon-white"></i> What is your sign?
+          </a>
+          <a
+            class="btn btn-primary dropdown-toggle"
+            data-toggle="dropdown"
+            href="#"
+          >
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#"><i class="icon-pencil"></i> Capricorn</a>
+            </li>
+            <li>
+              <a href="#"><i class="icon-trash"></i> Libra</a>
+            </li>
+            <li>
+              <a href="#"><i class="icon-ban-circle"></i> Aquarious</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="#"><i class="i"></i> Leo</a>
+            </li>
+          </ul>
+        </div>
+
+        <label for="height" style="padding: 10px"
+          >What is your profession?</label
+        >
+        <input type="text" />
+        <label for="favorite-color" style="padding: 10px"
+          >Favorite sport?</label
+        >
+        <input type="text" />
+        <label for="favorite-color" style="padding: 10px"
+          >Favorite place to eat?</label
+        >
+        <input type="text" /><label for="favorite-color" style="padding: 10px"
+          >What do you do for fun?</label
+        >
+        <input type="text" style="margin-bottom: 10px" />
+      </div>
+    </div>
+  </form>
+  <button class="btn btn-primary">Submit</button>
+</div>
