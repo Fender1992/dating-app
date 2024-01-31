@@ -1,0 +1,14 @@
+.messages-title {
+  text-align: center;
+  font-size: 100px;
+  border: 2px solid navy;
+  padding-bottom: 10px;
+}
+.message-sidebar {
+  padding: 10px;
+  border: 1px solid white;
+}
+.message-sidebar > div {
+  border: 1px solid black;
+  border-radius: 10px;
+}
