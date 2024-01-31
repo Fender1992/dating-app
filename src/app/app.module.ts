@@ -10,11 +10,7 @@ import { HeaderComponent } from './homepage/header/header.component';
 import { BodyComponent } from './homepage/body/body.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MessagesComponent } from './messages/messages.component';
-
-const appRoutes: Routes = [
-  { path: 'messages', component: MessagesComponent },
-  { path: '', component: HomepageComponent },
-];
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -22,8 +18,9 @@ const appRoutes: Routes = [
     HomepageComponent,
     HeaderComponent,
     BodyComponent,
+    MessagesComponent,
   ],
-  imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
 })
