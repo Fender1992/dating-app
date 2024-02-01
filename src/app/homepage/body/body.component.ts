@@ -7,6 +7,8 @@ import { NgForm } from '@angular/forms';
   styleUrl: './body.component.css',
 })
 export class BodyComponent {
+  defaultSign = 'Capricorn';
+  genders = ['male', 'female'];
   @ViewChild('f') screeningForm: NgForm;
   // onSubmit(form: NgForm) {
   //   console.log(form);
