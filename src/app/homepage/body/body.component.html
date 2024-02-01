@@ -1,61 +1,95 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-    <div class="col-xs-12">
-      <h1 class="form-prompt">👀Answer the questions and find a match 👀</h1>
+    <div class="col-12">
+      <h1 class="form-prompt mb-4">
+        👀 Answer the questions and find a match 👀
+      </h1>
     </div>
   </div>
-  <form action="" class="questions-container">
-    <div class="row justify-content-center">
-      <div class="col-lg-3">
-        <label for="favorite-color" style="padding: 10px"
-          >Enter your favorite color?</label
-        >
-        <input type="text" />
-        <div class="btn-group" style="padding-top: 10px">
-          <a class="btn btn-primary" href="#">
-            <i class="icon-user icon-white"></i> What is your sign?
-          </a>
-          <a
-            class="btn btn-primary dropdown-toggle"
-            data-toggle="dropdown"
-            href="#"
-          >
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="#"><i class="icon-pencil"></i> Capricorn</a>
-            </li>
-            <li>
-              <a href="#"><i class="icon-trash"></i> Libra</a>
-            </li>
-            <li>
-              <a href="#"><i class="icon-ban-circle"></i> Aquarious</a>
-            </li>
-            <li class="divider"></li>
-            <li>
-              <a href="#"><i class="i"></i> Leo</a>
-            </li>
-          </ul>
+  <form
+    action=""
+    class="questions-container"
+    (ngSubmit)="onSubmit()"
+    #f="ngForm"
+  >
+    <div class="row" style="margin-top: 150px; padding: 100px">
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="favorite-color">Enter your favorite color:</label>
+          <input
+            type="text"
+            ngModel
+            name="color"
+            class="form-control"
+            placeholder="E.g., Blue"
+            required
+          />
         </div>
-
-        <label for="height" style="padding: 10px"
-          >What is your profession?</label
-        >
-        <input type="text" />
-        <label for="favorite-color" style="padding: 10px"
-          >Favorite sport?</label
-        >
-        <input type="text" />
-        <label for="favorite-color" style="padding: 10px"
-          >Favorite place to eat?</label
-        >
-        <input type="text" /><label for="favorite-color" style="padding: 10px"
-          >What do you do for fun?</label
-        >
-        <input type="text" style="margin-bottom: 10px" />
+        <div class="form-group">
+          <label for="profession">What is your profession?</label>
+          <input
+            type="text"
+            ngModel
+            name="profession"
+            class="form-control"
+            placeholder="E.g., Web Developer"
+            required
+          />
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label for="sign">What is your sign?</label>
+          <select ngModel name="sign" class="form-select">
+            <option value="Capricorn">Capricorn</option>
+            <option value="Libra">Libra</option>
+            <option value="Aquarius">Aquarius</option>
+            <option value="Leo">Leo</option>
+            <option value="Cancer">Cancer</option>
+            <option value="Aries">Aries</option>
+            <option value="Taurus">Taurus</option>
+            <option value="Gemini">Gemini</option>
+            <option value="Virgo">Virgo</option>
+            <option value="Scorpio">Scorpio</option>
+            <option value="Pisces">Pisces</option>
+            <option value="Sagittarius">Sagittarius</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="sport">Favorite sport:</label>
+          <input
+            type="text"
+            ngModel
+            name="sport"
+            class="form-control"
+            placeholder="E.g., Soccer"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="eat">Favorite place to eat:</label>
+          <input
+            type="text"
+            ngModel
+            name="eat"
+            class="form-control"
+            placeholder="E.g., Italian Restaurant"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="activity">What do you do for fun?</label>
+          <input
+            type="text"
+            ngModel
+            name="activity"
+            class="form-control"
+            placeholder="E.g., Hiking"
+            required
+          />
+        </div>
       </div>
     </div>
+    <button class="btn btn-primary mt-3">Submit</button>
   </form>
-  <button class="btn btn-primary" style="margin-top: 10px">Submit</button>
 </div>

@@ -8,9 +8,10 @@ import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { HeaderComponent } from './homepage/header/header.component';
 import { BodyComponent } from './homepage/body/body.component';
-import { RouterModule, Routes } from '@angular/router';
 import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+import { CreateUserComponent } from './homepage/create-user/create-user.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +20,9 @@ import { AppRoutingModule } from './app-routing.module';
     HeaderComponent,
     BodyComponent,
     MessagesComponent,
+    CreateUserComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
 })

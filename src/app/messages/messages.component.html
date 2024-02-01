@@ -1,134 +1,89 @@
-<h1 class="messages-title">Messages</h1>
-<div class="container">
-  <div class="col-xs-12">
-    <div>
-      <span>
-        <!-- {{ m.profilePhoto }}
-        {{ m.message }} -->
-      </span>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="message-sidebar">
+        <div
+          class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary"
+          style="width: 250px"
+        >
+          <a
+            href="/"
+            class="d-flex align-items-center flex-shrink-0 p-3 link-body-emphasis text-decoration-none border-bottom"
+          >
+            <svg class="bi pe-none me-2" width="30" height="24">
+              <use xlink:href="#bootstrap"></use>
+            </svg>
+            <span class="fs-5 fw-semibold">Messages</span>
+          </a>
+          <div class="list-group list-group-flush border-bottom scrollarea">
+            <!-- Add your list of messages here -->
+            <a
+              href="#"
+              class="list-group-item list-group-item-action py-3 lh-sm active"
+            >
+              <div
+                class="d-flex w-100 align-items-center justify-content-between"
+              >
+                <strong class="mb-1">Name</strong>
+                <small>Wed</small>
+              </div>
+              <div class="col-10 mb-1 small">Message</div>
+            </a>
+            <a
+              href="#"
+              class="list-group-item list-group-item-action py-3 lh-sm"
+            >
+              <div
+                class="d-flex w-100 align-items-center justify-content-between"
+              >
+                <strong class="mb-1">Name</strong>
+                <small class="text-body-secondary">Tues</small>
+              </div>
+              <div class="col-10 mb-1 small">
+                Some placeholder content in a paragraph below the heading and
+                date.
+              </div>
+            </a>
+            <!-- Add more message items as needed -->
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-<div class="message-sidebar">
-  <div
-    class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary"
-    style="width: 380px"
-  >
-    <a
-      href="/"
-      class="d-flex align-items-center flex-shrink-0 p-3 link-body-emphasis text-decoration-none border-bottom"
-    >
-      <svg class="bi pe-none me-2" width="30" height="24">
-        <use xlink:href="#bootstrap"></use>
-      </svg>
-      <span class="fs-5 fw-semibold">Messages</span>
-    </a>
-    <div class="list-group list-group-flush border-bottom scrollarea">
-      <a
-        href="#"
-        class="list-group-item list-group-item-action active py-3 lh-sm"
-        aria-current="true"
-      >
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">name </strong>
-          <small>Wed</small>
+    <div class="col-md-6">
+      <div class="messages-content">
+        <h1 class="messages-title">Messages</h1>
+        <div class="message-container">
+          <!-- Display messages here -->
+          <div class="message">
+            <div class="message-avatar">
+              <!-- Profile photo here -->
+              <img src="profile-photo-url.jpg" alt="Profile Photo" />
+            </div>
+            <div class="message-text">
+              <!-- Message content here -->
+              <p>Hello there!</p>
+            </div>
+          </div>
+          <!-- Add more message elements as needed -->
         </div>
-        <div class="col-10 mb-1 small">message</div>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">name</strong>
-          <small class="text-body-secondary">Tues</small>
+        <!-- Message input field -->
+        <div class="message-input">
+          <input type="text" placeholder="Type your message here..." />
+          <button class="btn btn-primary">Send</button>
         </div>
-        <div class="col-10 mb-1 small">
-          Some placeholder content in a paragraph below the heading and date.
-        </div>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Mon</small>
-        </div>
-        <div class="col-10 mb-1 small">
-          Some placeholder content in a paragraph below the heading and date.
-        </div>
-      </a>
-
-      <a
-        href="#"
-        class="list-group-item list-group-item-action py-3 lh-sm"
-        aria-current="true"
-      >
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Wed</small>
-        </div>
-        <div class="col-10 mb-1 small">
-          Some placeholder content in a paragraph below the heading and date.
-        </div>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Tues</small>
-        </div>
-        <div class="col-10 mb-1 small">
-          Some placeholder content in a paragraph below the heading and date.
-        </div>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Mon</small>
-        </div>
-        <div class="col-10 mb-1 small">
-          Some placeholder content in a paragraph below the heading and date.
-        </div>
-      </a>
-      <a
-        href="#"
-        class="list-group-item list-group-item-action py-3 lh-sm"
-        aria-current="true"
-      >
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Wed</small>
-        </div>
-        <div class="col-10 mb-1 small">
-          Some placeholder content in a paragraph below the heading and date.
-        </div>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Tues</small>
-        </div>
-        <div class="col-10 mb-1 small">
-          Some placeholder content in a paragraph below the heading and date.
-        </div>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action py-3 lh-sm">
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Mon</small>
-        </div>
-        <div class="col-10 mb-1 small">
-          Some placeholder content in a paragraph below the heading and date.
-        </div>
-      </a>
-      <a
-        href="#"
-        class="list-group-item list-group-item-action py-3 lh-sm"
-        aria-current="true"
-      >
-        <div class="d-flex w-100 align-items-center justify-content-between">
-          <strong class="mb-1">List group item heading</strong>
-          <small class="text-body-secondary">Wed</small>
-        </div>
-        <div class="col-10 mb-1 small">
-          Some placeholder content in a paragraph below the heading and date.
-        </div>
-      </a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="matches-bar">
+        <h2 class="matches-title">Matches</h2>
+        <ul class="list-group">
+          <!-- Add your list of matches here -->
+          <li class="list-group-item">Match 1</li>
+          <li class="list-group-item">Match 2</li>
+          <li class="list-group-item">Match 3</li>
+          <!-- Add more matches as needed -->
+        </ul>
+      </div>
     </div>
   </div>
 </div>
