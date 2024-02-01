@@ -7,8 +7,6 @@ import { Router } from 'express';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  // /**
-  //  *
   //  */
   // constructor(private router: Router) {}
   // onLoadMessages() {

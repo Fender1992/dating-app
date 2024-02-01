@@ -14,6 +14,6 @@ export class BodyComponent {
   //   console.log(form);
   // }
   onSubmit() {
-    console.log(this.screeningForm);
+    this.screeningForm.reset();
   }
 }

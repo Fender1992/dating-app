@@ -7,27 +7,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './create-user.component.css',
 })
 export class CreateUserComponent implements OnInit {
-  registrationForm: FormGroup;
+  firstName = '';
+  lastName = '';
+  email = '';
+  phoneNumber = '';
+  Username = '' ;
 
-  constructor(private fb: FormBuilder) {}
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-    this.registrationForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
-    });
-  }
-
-  onSubmit() {
-    if (this.registrationForm.valid) {
-      // Process the registration data here (e.g., send it to an API)
-      const userData = this.registrationForm.value;
-      console.log('User data:', userData);
-    } else {
-      // Handle form validation errors
-      alert('Please fill in all required fields correctly.');
-    }
+  onSubmitUser(event: Event) {
+    this.firstName = event.target.
   }
 }
