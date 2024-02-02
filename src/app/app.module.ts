@@ -10,7 +10,7 @@ import { HeaderComponent } from './homepage/header/header.component';
 import { BodyComponent } from './homepage/body/body.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateUserComponent } from './homepage/create-user/create-user.component';
 
 @NgModule({
@@ -22,7 +22,7 @@ import { CreateUserComponent } from './homepage/create-user/create-user.componen
     MessagesComponent,
     CreateUserComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
 })

@@ -1,26 +1,161 @@
 <div class="container">
-  <form>
-    <div class="row">
-      <div><h1>Create a user</h1></div>
-      <div class="col-lg-2">
-        <label>First name</label>
-        <input type="text" required />
-        <label>Last name</label>
-        <input type="text" required />
-        <label>Email</label>
-        <input type="text" required />
-        <label>Phone Number</label>
-        <input type="text" required minlength="10" maxlength="10" />
-        <label>Username</label>
-        <input type="text" required />
-        <button
-          class="btn btn-primary"
-          style="margin-top: 10px"
-          (click)="onSubmitUser($event)"
-        >
-          Submit
-        </button>
+  <form
+    [formGroup]="createUserForm"
+    (ngSubmit)="onSubmitUser()"
+    class="signup-form"
+    style="
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    "
+  >
+    <div formGroupName="userData" class="signup-box" style="padding: 30px">
+      <h1 class="signup-heading" style="color: #ff5a5f">
+        Join the Ultimate Dating Experience!
+      </h1>
+      <p class="signup-subheading" style="color: #333">
+        Discover your perfect match today.
+      </p>
+
+      <div class="form-group">
+        <label for="firstName" style="color: #333">First Name</label>
+        <input
+          type="text"
+          id="firstName"
+          formControlName="firstName"
+          class="form-control"
+          placeholder="First Name"
+          required
+        />
       </div>
+
+      <div class="form-group">
+        <label for="lastName" style="color: #333">Last Name</label>
+        <input
+          type="text"
+          id="lastName"
+          formControlName="lastName"
+          class="form-control"
+          placeholder="Last Name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email" style="color: #333">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form-control"
+          placeholder="Email Address"
+          required
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            createUserForm.get('userData.email').invalid &&
+            createUserForm.get('userData.email').touched
+          "
+          style="color: #ff5a5f"
+        >
+          Please enter a valid email address.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="phoneNumber" style="color: #333">Phone Number</label>
+        <input
+          type="tel"
+          minlength="10"
+          maxlength="10"
+          id="phoneNumber"
+          formControlName="phoneNumber"
+          class="form-control"
+          placeholder="Phone Number"
+          required
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            createUserForm.get('userData.phoneNumber').invalid &&
+            createUserForm.get('userData.phoneNumber').touched
+          "
+          style="color: #ff5a5f"
+        >
+          Please enter a valid phone number.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="birthdate" style="color: #333">Date of Birth</label>
+        <input
+          type="date"
+          id="birthdate"
+          formControlName="birthdate"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="gender" style="color: #333">Gender</label>
+        <select
+          id="gender"
+          formControlName="gender"
+          class="form-control"
+          required
+        >
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="username" style="color: #333">Username</label>
+        <input
+          type="text"
+          id="username"
+          formControlName="username"
+          class="form-control"
+          placeholder="Choose a Username"
+          required
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            createUserForm.get('userData.username').invalid &&
+            createUserForm.get('userData.username').touched
+          "
+          style="color: #ff5a5f"
+        >
+          Please enter a valid username.
+        </div>
+      </div>
+
+      <div class="form-check">
+        <input
+          type="checkbox"
+          id="agreeTerms"
+          formControlName="agreeTerms"
+          class="form-check-input"
+          required
+        />
+        <label class="form-check-label" for="agreeTerms" style="color: #333">
+          I agree to the
+          <a href="#" style="color: #ff5a5f">Terms & Conditions</a> and
+          <a href="#" style="color: #ff5a5f">Privacy Policy</a>
+        </label>
+      </div>
+
+      <button
+        class="btn btn-primary btn-signup"
+        type="submit"
+        style="background-color: #ff5a5f"
+      >
+        Get Started
+      </button>
     </div>
   </form>
 </div>

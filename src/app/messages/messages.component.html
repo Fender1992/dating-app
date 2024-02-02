@@ -3,16 +3,13 @@
     <div class="col-md-3">
       <div class="message-sidebar">
         <div
-          class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary"
+          class="d-flex flex-column align-items-stretch flex-shrink-0 bg-light"
           style="width: 250px"
         >
           <a
             href="/"
-            class="d-flex align-items-center flex-shrink-0 p-3 link-body-emphasis text-decoration-none border-bottom"
+            class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom"
           >
-            <svg class="bi pe-none me-2" width="30" height="24">
-              <use xlink:href="#bootstrap"></use>
-            </svg>
             <span class="fs-5 fw-semibold">Messages</span>
           </a>
           <div class="list-group list-group-flush border-bottom scrollarea">
@@ -23,10 +20,10 @@
               <div
                 class="d-flex w-100 align-items-center justify-content-between"
               >
-                <strong class="mb-1">Name</strong>
+                <strong class="mb-1">John Doe</strong>
                 <small>Wed</small>
               </div>
-              <div class="col-10 mb-1 small">Message</div>
+              <div class="col-10 mb-1 small">Hey, how's it going?</div>
             </a>
             <a
               href="#"
@@ -35,40 +32,55 @@
               <div
                 class="d-flex w-100 align-items-center justify-content-between"
               >
-                <strong class="mb-1">Name</strong>
+                <strong class="mb-1">Jane Smith</strong>
                 <small class="text-body-secondary">Tues</small>
               </div>
               <div class="col-10 mb-1 small">
-                Some placeholder content in a paragraph below the heading and
-                date.
+                Can't wait for our weekend plans!
               </div>
             </a>
+            <!-- Add more conversations here -->
           </div>
         </div>
       </div>
     </div>
     <div class="col-md-6">
       <div class="messages-content">
-        <h1 class="messages-title">Messages</h1>
+        <h1 class="messages-title">Chat</h1>
         <div class="message-container">
-          <div class="message">
+          <div class="message received">
             <div class="message-avatar">
-              <img src="profile-photo-url.jpg" alt="Profile Photo" />
+              <img src="john-doe-profile.jpg" alt="John Doe" />
             </div>
             <div class="message-text">
-              <p>Hello there!</p>
+              <p>Hey! How was your day?</p>
+              <span class="message-time">11:45 AM</span>
             </div>
           </div>
+          <div class="message sent">
+            <div class="message-text">
+              <p>Hi John, my day was great. How about yours?</p>
+              <span class="message-time">11:48 AM</span>
+            </div>
+          </div>
+          <!-- Add more messages here -->
         </div>
         <div class="message-input">
-          <input type="text" placeholder="Type your message here..." />
-          <button class="btn btn-primary">Send</button>
+          <textarea
+            rows="2"
+            placeholder="Type your message here..."
+            class="form-control"
+          ></textarea>
+          <div class="message-actions">
+            <button class="btn btn-primary">Send</button>
+            <button class="btn btn-secondary">Attach</button>
+          </div>
         </div>
       </div>
     </div>
     <div class="col-md-3">
       <div class="matches-bar">
-        <h2 class="matches-title">Matches</h2>
+        <h2 class="matches-title">Your Matches</h2>
         <ul class="list-group">
           <li class="list-group-item">Match 1</li>
           <li class="list-group-item">Match 2</li>
