@@ -1,5 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { response } from 'express';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-create-user',
@@ -8,12 +11,17 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class CreateUserComponent implements OnInit {
   createUserForm: FormGroup;
+  gender: [];
+  postForm: any;
+  users: [];
 
   ngOnInit() {
     this.createUserForm = new FormGroup({
       userData: new FormGroup({
         firstName: new FormControl('', Validators.required),
         lastName: new FormControl('', Validators.required),
+        gender: new FormControl(),
+        birthdate: new FormControl('', Validators.required),
         email: new FormControl('', [Validators.required, Validators.email]),
         phoneNumber: new FormControl('', [
           Validators.required,
@@ -27,9 +35,48 @@ export class CreateUserComponent implements OnInit {
       }),
       //controls for the html
     });
+    this.fetchUsers();
   }
 
-  onSubmitUser() {
-    console.log(this.createUserForm);
+  constructor(private http: HttpClient) {}
+
+  onFetchUsers() {
+    this.fetchUsers();
+  }
+
+  onSubmitUser(userData: {
+    firstName: string;
+    lastName: string;
+    birthdate: string;
+    email: string;
+    phoneNumber: string;
+    username: string;
+  }) {
+    this.http
+      .post(
+        'https://dating-app-933fe-default-rtdb.firebaseio.com/posts.json',
+        userData
+      )
+      .subscribe((responseData) => {
+        console.log(responseData);
+      });
+  }
+  private fetchUsers() {
+    this.http
+      .get('https://dating-app-933fe-default-rtdb.firebaseio.com/posts.json')
+      .pipe(
+        map((responseData) => {
+          const usersArr = [];
+          for (const user in responseData) {
+            if (responseData.hasOwnProperty(user)) {
+              usersArr.push({ ...responseData[user], id: user });
+            }
+          }
+          return usersArr;
+        })
+      )
+      .subscribe((user) => {
+        console.log(user);
+      });
   }
 }
