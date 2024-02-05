@@ -132,6 +132,22 @@
         >
           Please enter a valid username.
         </div>
+        <div class="profile-photo">
+          <a href="Upload a profile photo">
+            <label for="profilePhoto" class="upload-label"
+              >Upload a profile photo</label
+            >
+          </a>
+          <input
+            type="file"
+            id="profilePhoto"
+            formControlName="profilePhoto"
+            accept="image/*"
+            (change)="onProfilePhotoSelected($event)"
+            style="display: none"
+          />
+          <img src="" alt="" id="previewImage" />
+        </div>
       </div>
 
       <!-- <div class="form-check">

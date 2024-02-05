@@ -1,23 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { response } from 'express';
-import { map } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { User } from './user.model';
 
 @Component({
   selector: 'app-create-user',
   templateUrl: './create-user.component.html',
-  styleUrl: './create-user.component.css',
+  styleUrls: ['./create-user.component.css'],
 })
 export class CreateUserComponent implements OnInit {
   createUserForm: FormGroup;
-  gender: [];
-  postForm: any;
-  users: [];
+  users: User[] = [];
+
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
     this.createUserForm = new FormGroup({
       userData: new FormGroup({
+        profilePhoto: new FormControl(null), // Remove Validators.required
         firstName: new FormControl('', Validators.required),
         lastName: new FormControl('', Validators.required),
         gender: new FormControl(),
@@ -33,27 +34,18 @@ export class CreateUserComponent implements OnInit {
           Validators.minLength(4),
         ]),
       }),
-      //controls for the html
     });
     this.fetchUsers();
+    this.createUserForm.reset();
   }
-
-  constructor(private http: HttpClient) {}
 
   onFetchUsers() {
     this.fetchUsers();
   }
 
-  onSubmitUser(userData: {
-    firstName: string;
-    lastName: string;
-    birthdate: string;
-    email: string;
-    phoneNumber: string;
-    username: string;
-  }) {
+  onSubmitUser(userData: User) {
     this.http
-      .post(
+      .post<{ name: string }>(
         'https://dating-app-933fe-default-rtdb.firebaseio.com/posts.json',
         userData
       )
@@ -61,22 +53,27 @@ export class CreateUserComponent implements OnInit {
         console.log(responseData);
       });
   }
+
+  onProfilePhotoSelected(event: any) {
+    const fileInput = event.target as HTMLInputElement;
+    const previewImage = document.getElementById(
+      'previewImage'
+    ) as HTMLImageElement;
+
+    if (fileInput.files && fileInput.files[0]) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        if (previewImage) {
+          previewImage.src = e.target.result as string;
+        }
+      };
+
+      reader.readAsDataURL(fileInput.files[0]);
+    }
+  }
+
   private fetchUsers() {
-    this.http
-      .get('https://dating-app-933fe-default-rtdb.firebaseio.com/posts.json')
-      .pipe(
-        map((responseData) => {
-          const usersArr = [];
-          for (const user in responseData) {
-            if (responseData.hasOwnProperty(user)) {
-              usersArr.push({ ...responseData[user], id: user });
-            }
-          }
-          return usersArr;
-        })
-      )
-      .subscribe((user) => {
-        console.log(user);
-      });
+    // Fetch users from your API and update this.users array
   }
 }

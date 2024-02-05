@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateUserComponent } from './homepage/create-user/create-user.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatchesPageComponent } from './matches-page/matches-page.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     BodyComponent,
     MessagesComponent,
     CreateUserComponent,
+    MatchesPageComponent,
   ],
   imports: [
     BrowserModule,
