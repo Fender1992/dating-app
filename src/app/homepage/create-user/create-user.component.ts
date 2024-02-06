@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { User } from './user.model';
+import { UUID, randomUUID } from 'node:crypto';
 
 @Component({
   selector: 'app-create-user',
@@ -12,6 +13,7 @@ import { User } from './user.model';
 export class CreateUserComponent implements OnInit {
   createUserForm: FormGroup;
   users: User[] = [];
+  userId = Math.floor(Math.random() * 1000000000000);
 
   constructor(private http: HttpClient) {}
 
@@ -44,6 +46,7 @@ export class CreateUserComponent implements OnInit {
   }
 
   onSubmitUser(userData: User) {
+    userData.id = this.userId;
     this.http
       .post<{ name: string }>(
         'https://dating-app-933fe-default-rtdb.firebaseio.com/posts.json',
@@ -73,7 +76,5 @@ export class CreateUserComponent implements OnInit {
     }
   }
 
-  private fetchUsers() {
-    // Fetch users from your API and update this.users array
-  }
+  private fetchUsers() {}
 }
