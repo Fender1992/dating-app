@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { User } from './user.model';
@@ -14,6 +14,16 @@ export class CreateUserComponent implements OnInit {
   createUserForm: FormGroup;
   users: User[] = [];
   userId = Math.floor(Math.random() * 1000000000000);
+  userResponseData: User = {
+    firstName: '',
+    lastName: '',
+    gender: '',
+    birthdate: '',
+    email: '',
+    phoneNumber: '',
+    username: '',
+    id: null,
+  };
 
   constructor(private http: HttpClient) {}
 
@@ -44,6 +54,15 @@ export class CreateUserComponent implements OnInit {
   onFetchUsers() {
     this.fetchUsers();
   }
+  onGetUser(userData: User) {
+    this.http
+      .get<User>(
+        'https://dating-app-933fe-default-rtdb.firebaseio.com/posts.json'
+      )
+      .subscribe((userDataResponse) => {
+        this.userResponseData = userDataResponse;
+      });
+  }
 
   onSubmitUser(userData: User) {
     userData.id = this.userId;
@@ -52,9 +71,7 @@ export class CreateUserComponent implements OnInit {
         'https://dating-app-933fe-default-rtdb.firebaseio.com/posts.json',
         userData
       )
-      .subscribe((responseData) => {
-        console.log(responseData);
-      });
+      .subscribe();
   }
 
   onProfilePhotoSelected(event: any) {

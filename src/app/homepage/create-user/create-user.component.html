@@ -174,4 +174,13 @@
       </button>
     </div>
   </form>
+  <button
+    (click)="onGetUser($event)"
+    class="btn btn-primary btn-signup"
+    type="submit"
+    style="background-color: #ff5a5f"
+  >
+    Users:
+  </button>
+  <p>{{ userResponseData.firstName | json }}</p>
 </div>
