@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { User } from './user.model';
 import { UUID, randomUUID } from 'node:crypto';
+import { response } from 'express';
 
 @Component({
   selector: 'app-create-user',
@@ -14,16 +15,7 @@ export class CreateUserComponent implements OnInit {
   createUserForm: FormGroup;
   users: User[] = [];
   userId = Math.floor(Math.random() * 1000000000000);
-  userResponseData: User = {
-    firstName: '',
-    lastName: '',
-    gender: '',
-    birthdate: '',
-    email: '',
-    phoneNumber: '',
-    username: '',
-    id: null,
-  };
+  @Output() htmlUser = [];
 
   constructor(private http: HttpClient) {}
 
@@ -59,8 +51,21 @@ export class CreateUserComponent implements OnInit {
       .get<User>(
         'https://dating-app-933fe-default-rtdb.firebaseio.com/posts.json'
       )
-      .subscribe((userDataResponse) => {
-        this.userResponseData = userDataResponse;
+      .pipe(
+        map((users) => {
+          const userArray = [];
+
+          for (const userId in users) {
+            if (users.hasOwnProperty(userId)) {
+              userArray.push(users[userId]);
+            }
+          }
+          return userArray;
+        })
+      )
+      .subscribe((userArray) => {
+        this.htmlUser = userArray;
+        console.log(this.htmlUser);
       });
   }
 

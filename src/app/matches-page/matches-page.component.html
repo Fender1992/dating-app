@@ -4,7 +4,9 @@
   </head>
   <body>
     <div class="container">
-      <div class="box"></div>
+      <div class="box" *ngFor="let user of htmlUser">
+        <app-create-user [htmlUser]="htmlUser"></app-create-user>
+      </div>
       <div class="box"></div>
     </div>
   </body>

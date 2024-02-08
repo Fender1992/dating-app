@@ -174,13 +174,11 @@
       </button>
     </div>
   </form>
-  <button
-    (click)="onGetUser($event)"
-    class="btn btn-primary btn-signup"
-    type="submit"
-    style="background-color: #ff5a5f"
-  >
-    Users:
-  </button>
-  <p>{{ userResponseData.firstName | json }}</p>
+  <!-- <button class="btn btn-primary" (click)="onGetUser($event)">Get users</button>
+  <p *ngFor="let user of htmlUser">
+    {{ user.userData.firstName + " " + user.userData.lastName }}
+    <br />
+    {{ user.userData.gender }}
+
+  </p> -->
 </div>
