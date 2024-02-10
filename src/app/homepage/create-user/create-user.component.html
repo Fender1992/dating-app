@@ -174,11 +174,8 @@
       </button>
     </div>
   </form>
-  <!-- <button class="btn btn-primary" (click)="onGetUser($event)">Get users</button>
-  <p *ngFor="let user of htmlUser">
-    {{ user.userData.firstName + " " + user.userData.lastName }}
-    <br />
-    {{ user.userData.gender }}
-
-  </p> -->
+  <button class="btn btn-primary" (click)="onGetUser($event)">Get users</button>
+  <p *ngFor="let user of users">
+    {{ user.userData.lastName }}
+  </p>
 </div>

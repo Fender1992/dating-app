@@ -1,10 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { User } from './user.model';
-import { UUID, randomUUID } from 'node:crypto';
-import { response } from 'express';
 
 @Component({
   selector: 'app-create-user',
@@ -13,9 +11,9 @@ import { response } from 'express';
 })
 export class CreateUserComponent implements OnInit {
   createUserForm: FormGroup;
+  @Output() userFetched: EventEmitter<User[]> = new EventEmitter<User[]>();
   users: User[] = [];
   userId = Math.floor(Math.random() * 1000000000000);
-  @Output() htmlUser = [];
 
   constructor(private http: HttpClient) {}
 
@@ -46,6 +44,7 @@ export class CreateUserComponent implements OnInit {
   onFetchUsers() {
     this.fetchUsers();
   }
+
   onGetUser(userData: User) {
     this.http
       .get<User>(
@@ -64,8 +63,9 @@ export class CreateUserComponent implements OnInit {
         })
       )
       .subscribe((userArray) => {
-        this.htmlUser = userArray;
-        console.log(this.htmlUser);
+        this.users = userArray;
+        this.userFetched.emit(this.users); // Emitting the fetched users
+        console.log(this.users);
       });
   }
 
@@ -98,5 +98,7 @@ export class CreateUserComponent implements OnInit {
     }
   }
 
-  private fetchUsers() {}
+  private fetchUsers() {
+    // Implement your fetch logic here
+  }
 }

@@ -9,7 +9,7 @@ import { NgModel } from '@angular/forms';
   styleUrl: './matches-page.component.css',
 })
 export class MatchesPageComponent implements OnInit {
-  @Input() htmlUser: User;
+  @Input() User: { firstName: string };
 
   ngOnInit() {}
 }
