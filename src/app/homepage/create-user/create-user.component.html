@@ -176,6 +176,6 @@
   </form>
   <button class="btn btn-primary" (click)="onGetUser($event)">Get users</button>
   <p *ngFor="let user of users">
-    {{ user.userData.lastName }}
+    {{ user?.lastName }}
   </p>
 </div>

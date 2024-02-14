@@ -45,27 +45,38 @@ export class CreateUserComponent implements OnInit {
     this.fetchUsers();
   }
 
-  onGetUser(userData: User) {
+  onGetUser(event: any) {
+
     this.http
       .get<User>(
         'https://dating-app-933fe-default-rtdb.firebaseio.com/posts.json'
       )
-      .pipe(
-        map((users) => {
-          const userArray = [];
+      // .pipe(
+      //   map((users) => {
+      //     const userArray = [];
 
-          for (const userId in users) {
-            if (users.hasOwnProperty(userId)) {
-              userArray.push(users[userId]);
-            }
-          }
-          return userArray;
-        })
-      )
+      //     for (const userId in users) {
+      //       if (users.hasOwnProperty(userId)) {
+      //         userArray.push(users[userId]);
+      //       }
+      //     }
+      //     return userArray;
+      //   })
+      // )
       .subscribe((userArray) => {
-        this.users = userArray;
-        this.userFetched.emit(this.users); // Emitting the fetched users
-        console.log(this.users);
+
+        for(var key in userArray) {
+          let user = userArray[key]?.userData;
+          if (user) {
+            this.users.push(user);
+          }
+          
+        }
+
+        console.log('this.users', this.users);
+        // this.users = userArray;
+        //this.userFetched.emit(this.users); // Emitting the fetched users
+        //console.log(userArray);
       });
   }
 
