@@ -11,7 +11,7 @@ import { User } from './user.model';
 })
 export class CreateUserComponent implements OnInit {
   createUserForm: FormGroup;
-  @Output() userFetched: EventEmitter<User[]> = new EventEmitter<User[]>();
+  // @Output() userFetched: EventEmitter<User[]> = new EventEmitter<User[]>();
   users: User[] = [];
   userId = Math.floor(Math.random() * 1000000000000);
 
@@ -45,6 +45,16 @@ export class CreateUserComponent implements OnInit {
     this.fetchUsers();
   }
 
+  onSubmitUser(userData: User) {
+    userData.id = this.userId;
+    this.http
+      .post<{ name: string }>(
+        'https://dating-app-933fe-default-rtdb.firebaseio.com/posts.json',
+        userData
+      )
+      .subscribe();
+  }
+
   onGetUser(userData: User) {
     this.http
       .get<User>(
@@ -53,7 +63,6 @@ export class CreateUserComponent implements OnInit {
       .pipe(
         map((users) => {
           const userArray = [];
-
           for (const userId in users) {
             if (users.hasOwnProperty(userId)) {
               userArray.push(users[userId]);
@@ -64,19 +73,9 @@ export class CreateUserComponent implements OnInit {
       )
       .subscribe((userArray) => {
         this.users = userArray;
-        this.userFetched.emit(this.users); // Emitting the fetched users
+        // this.userFetched.emit(this.users); // Emitting the fetched users
         console.log(this.users);
       });
-  }
-
-  onSubmitUser(userData: User) {
-    userData.id = this.userId;
-    this.http
-      .post<{ name: string }>(
-        'https://dating-app-933fe-default-rtdb.firebaseio.com/posts.json',
-        userData
-      )
-      .subscribe();
   }
 
   onProfilePhotoSelected(event: any) {
