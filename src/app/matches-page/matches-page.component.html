@@ -1,11 +1,20 @@
 <div>
   <body>
-    <div class="container">
-      <div class="box"></div>
-      <div class="box"></div>
+    <div class="container" *ngFor="let u of users.slice(0, 2)">
+      <div class="box" style="border: 1px solid red">
+        <div class="matched">
+          <p>{{ u.name }}</p>
+          <p>{{ "Age: " + u.age }}</p>
+          <div class="img-container">
+            <div class="img">
+              <img [src]="u.profilePhoto" alt="Profile Photo" />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
-  <div>
+  <!-- <div>
     <button>Get User</button>
-  </div>
+  </div> -->
 </div>

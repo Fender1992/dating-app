@@ -1,41 +1,31 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CreateUserComponent } from '../homepage/create-user/create-user.component';
-import { User } from '../homepage/create-user/user.model';
-import { NgModel } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { getUser } from '../store/user.actions';
+import { UserService } from '../Services/users.service';
 
 @Component({
   selector: 'app-matches-page',
   templateUrl: './matches-page.component.html',
   styleUrl: './matches-page.component.css',
+  providers: [UserService],
 })
 export class MatchesPageComponent implements OnInit {
-  users: User[] = [];
+  // users: User[] = [];
+  // users$: Observable<[]>;
+  users: { name: string }[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private usersService: UserService) {}
 
-  ngOnInit() {}
+  findMatch() {}
 
-  onGetUser(userData: User) {
-    this.http
-      .get<User>(
-        'https://dating-app-933fe-default-rtdb.firebaseio.com/posts.json'
-      )
-      .pipe(
-        map((users) => {
-          const userArray = [];
+  ngOnInit() {
+    this.users = this.usersService.usersDatabase;
+    // this.store.dispatch(getUser());
+  }
 
-          for (const userId in users) {
-            if (users.hasOwnProperty(userId)) {
-              userArray.push(users[userId]);
-            }
-          }
-          return userArray;
-        })
-      )
-      .subscribe((userArray) => {
-        this.users = userArray;
-        // this.userFetched.emit(this.users); // Emitting the fetched users
-        console.log(this.users);
-      });
+  onMatched(event: any) {
+    this.users = this.usersService.usersDatabase;
+    console.log(this.users);
   }
 }

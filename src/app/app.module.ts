@@ -14,6 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateUserComponent } from './homepage/create-user/create-user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatchesPageComponent } from './matches-page/matches-page.component';
+import { StoreModule } from '@ngrx/store';
+import { userReducer } from './store/user.reducer';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { MatchesPageComponent } from './matches-page/matches-page.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    StoreModule.forRoot({ user: userReducer }),
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
