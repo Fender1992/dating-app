@@ -6,12 +6,12 @@ export class UserService {
     {
       name: 'Lois Griffin',
       age: 34,
-      profilePhoto: 'src/assets/profilePhotos/loisG.png',
+      profilePhoto: 'assets/profilePhotos/loisG.png',
     },
     {
       name: 'Peter Griffin',
       age: 44,
-      profilePhoto: 'src/app/matches-page/images/female.jpg',
+      profilePhoto: 'assets/profilePhotos/PeterG.png',
     },
     {
       name: 'Chris Griffin',
